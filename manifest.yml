@@ -1,3 +1,4 @@
+---
 declared-services:
   conversation-service:
     label: conversation
@@ -10,10 +11,11 @@ declared-services:
     plan: Shared
 applications:
 - services:
-   - conversation-service
-   - weatherinsights-service
-   - cloudantNoSQLDB-service
-  name: text-bot
+  - conversation-service
+  - weatherinsights-service
+  - cloudantNoSQLDB-service
+  name: watsondevday-ams
   command: npm start
   path: .
   memory: 512M
+  host: watsondevday-ams

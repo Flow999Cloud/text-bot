@@ -16,6 +16,7 @@ var Api = (function() {
   var requestPayload;
   var responsePayload;
   var messageEndpoint = '/api/message';
+  var skyscannerEndpoint = '/api/skyscanner'
 
   //Send a message request to the server
   function sendRequest(text, context) {
@@ -30,11 +31,11 @@ var Api = (function() {
       payloadToWatson.context = context;
     }
     payloadToWatson.user = uuid;
-    
+
     // Built http request
     var http = new XMLHttpRequest();
     http.open('POST', messageEndpoint, true);
-    http.setRequestHeader('Content-type', 'application/json');
+    http.setRequestHeader('Content-Type', 'application/json');
     http.onreadystatechange = function() {
       if (http.readyState === 4 && http.status === 200 && http.responseText) {
         Api.setResponsePayload(http.responseText);
@@ -52,6 +53,28 @@ var Api = (function() {
     http.send(params);
   }
 
+  function requestFlightDetails(payloadToWatson) {
+    // Built http request
+    var http = new XMLHttpRequest();
+
+    http.open('POST', skyscannerEndpoint, true);
+    http.setRequestHeader('Content-type', 'application/json');
+
+    http.onreadystatechange = function() {
+      if (http.readyState === 4 && http.status === 200 && http.responseText) {
+        Api.setResponsePayload(http.responseText);
+      }
+    };
+
+    var params = JSON.stringify(payloadToWatson);
+    // Stored in variable (publicly visible through Api.getRequestPayload)
+    // to be used throughout the application
+    //if (Object.getOwnPropertyNames(payloadToWatson).length !== 0) {
+  //    Api.setRequestPayload(params);
+  //  }
+
+    http.send(params);
+  }
 
   // Publicly accessible methods defined
   return {
@@ -69,7 +92,18 @@ var Api = (function() {
       return responsePayload;
     },
     setResponsePayload: function(newPayloadStr) {
-      responsePayload = JSON.parse(newPayloadStr);
+      newPayload = JSON.parse(newPayloadStr);
+
+      //On receiving a response check whether 2nd automated request is needed to get flight details from Skyscanner
+      if (newPayload.context) {
+        if (newPayload.context.skyscanner_api) {
+          delete newPayload.context.skyscanner_api;
+          newPayloadStr = JSON.stringify(newPayload);
+          requestFlightDetails(newPayload);
+        }
+      }
+
+      responsePayload = newPayload;
     }
   };
 

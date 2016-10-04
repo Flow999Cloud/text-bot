@@ -2075,7 +2075,11 @@ input[type=text]:focus {
   font-size: 0.75rem;
   letter-spacing: 0;
   line-height: 1.125rem;
-  background-color: #855ca7;
+  background-image: url('../images/WatsonDevDay.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  /*background-color: #855ca7;*/
+  /*background: linear-gradient(#132334, #132334, #5eb9d8);*/
   color: #fff;
   overflow-x: auto;
   margin-top: 0;

@@ -1,4 +1,4 @@
-# Text Bot [![Build Status](https://travis-ci.org/watson-developer-cloud/text-bot.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/text-bot)
+# Text Bot [![Build Status](https://travis-ci.org/watson-developer-cloud/text-bot.svg?branch=master)](https://travis-ci.org/eciggaar/text-bot)
 
 
 <p align="center">
@@ -59,7 +59,7 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
 
      - Create an instance of the [Conversation][conversation] service by running the following command:
 
-    `cf create-service conversation free conversation-service`
+     `cf create-service conversation free conversation-service`
 
      - Create an instance of the [Cloudant NoSQL database](cloudantNoSQLDB) service by running the following command:
 
@@ -101,26 +101,26 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
         #CLOUDANT
         CLOUDANT_URL=
 
-11. The Conversation service must be trained before you can successfully use this application. The training data is provided in the file `resources/conversation-training-data.json` in your checkout of the repository. To train the model used by the Conversation service for this SK, do the following:
+11. The Conversation service must be trained before you can successfully use this application. The training data is provided in the file `resources/conversation-training-data.json` in your checkout of the repository. To train the model used by the Conversation service for this application, do the following:
 
-    1. Login to Bluemix
+    1. Login to Bluemix.
 
-    2. Select **Dashboard** from the page heading
+    2. Select **Dashboard** from the page heading.
 
-    3. Select the instance of the Conversation service that you are using
+    3. Select the instance of the Conversation service that you are using.
 
-    4. Scroll down (if necessary) and click **Launch tool**. (You may be asked to log in again.)
+    4. Scroll down (if necessary) and click **Launch tool**. (You may be asked to log in again).
 
-    5. Click **Choose a file**, navigate to the `resources` directory of your clone of the repository for this project, and select the file `conversation-training-data.json`
+    5. Click **Choose a file**, navigate to the `resources` directory of your clone of the repository for this project, and select the file `conversation-training-data.json`.
 
 
     6. Click **Import** to upload the `.json` file, creates a workspace, and trains the model used by the Conversation service.
 
     To find your workspace ID once training has completed, click the three vertical dots in the upper right-hand corner of the Workspace pane, and select **View details**.
 
-14. Push the updated application live by running the following command:
+14. Push the updated application live by running the following command from the root directory of your project:
 
-    cf push
+    `cf push`
 
     or by pressing the following "Deploy to Bluemix" button:
 
@@ -164,7 +164,7 @@ The following image provides a general overview of how botkits from external ser
 
 ![](readme_images/TextBot-ArchitectureFlow.jpg)
 
-This application uses flight data from Skyscanner and can easily be extended to integrate with botkits from vendors such as Facebook and Twilio. However, the concepts used here are platform independent and can be applied to use cases other than booking flights. To do so, define your use case in the Conversation service and configure your Conversation by using the tool provided on the dashboard page for your instance of the Conversation service. You can also integrate other bots as mentioned on the [Installing the bots](#bot-installation) section.
+This particular application uses flight data from Skyscanner and can easily be extended to integrate with botkits from vendors such as Facebook and Twilio. However, the concepts used here are platform independent and can be applied to use cases other than booking flights. To do so, define your use case in the Conversation service and configure your Conversation by using the tool provided on the dashboard page for your instance of the Conversation service. You can also integrate other bots as mentioned on the [Installing the bots](#bot-installation) section.
 
 
 ## Reference information

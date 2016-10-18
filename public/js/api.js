@@ -92,7 +92,7 @@ var Api = (function() {
       return responsePayload;
     },
     setResponsePayload: function(newPayloadStr) {
-      newPayload = JSON.parse(newPayloadStr);
+      var newPayload = JSON.parse(newPayloadStr);
 
       //On receiving a response check whether 2nd automated request is needed to get flight details from Skyscanner
       if (newPayload.context) {

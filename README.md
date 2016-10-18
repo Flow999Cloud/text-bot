@@ -12,7 +12,6 @@ This project is forked from the Text Message Bot Starter Kit (SK), which is desi
 ## Table of Contents
  - [Getting Started](#getting-started)
  - [Installing the bots](#bot-installation)
- - [About the Weather conversation pattern](#about-the-weather-conversation-pattern)
  - [Running the application locally](#running-locally)
  - [Adapting/Extending the Starter Kit](#adaptingextending-the-starter-kit)
  - [Best Practices](#best-practices)
@@ -23,7 +22,7 @@ This project is forked from the Text Message Bot Starter Kit (SK), which is desi
 
 This application is written in [Node.js](http://nodejs.org/) and uses the [npm](https://www.npmjs.com/), the Node Package Manager, command to install a software development kit (SDK) for the Watson Developer Cloud services, as well as to satisfy other dependencies. The following instructions include Instructions for downloading and installing these.
 
-1. Log into GitHub and clone [the repository for this application](https://github.com/watson-developer-cloud/text-bot). Change to the folder that contains your clone of this repository.
+1. Log into GitHub and clone [the repository for this application](https://github.com/eciggaar/text-bot). Change to the folder that contains your clone of this repository.
 
 2. [Create a Bluemix Account](sign_up) if you do not already have one, or use an existing account.
 
@@ -44,7 +43,7 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
           - services:
             - conversation-service
             - cloudantNoSQLDB-service
-          name: application-name
+          name: <application-name>
           command: npm start
           path: .
           memory: 512M
@@ -60,11 +59,11 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
 
      - Create an instance of the [Conversation][conversation] service by running the following command:
 
-        cf create-service conversation free conversation-service
+    `cf create-service conversation free conversation-service`
 
      - Create an instance of the [Cloudant NoSQL database](cloudantNoSQLDB) service by running the following command:
 
-        cf create-service cloudantNoSQLDB Lite cloudantNoSQLDB-service
+     `cf create-service cloudantNoSQLDB Lite cloudantNoSQLDB-service`
 
 8. Create and retrieve service keys to access the Conversation service:
 

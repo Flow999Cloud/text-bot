@@ -7,9 +7,7 @@
 
 ## Installation
 
-This is a Starter Kit (SK), which is designed to get you up and running quickly with a common industry pattern, and to provide information and best practices around Watson services and bots. This application demonstrates how the Conversation service can be used with different bot kits such as those from Facebook and Twilio to enable users to have an intuitive and natural conversation with the bots. This use case for this starter kit is around discussing the weather. The starter kit uses the WeatherInsights service to gather weather data and provide forecasts.
-
-A running instance of the application in this Starter Kit is available as a [demo](https://text-bot.mybluemix.net). The demo does not include Facebook or Twilio integration. Running the application using the Facebook and Twilio bots requires credentials to access their services. For information about obtaining credentials and integrating Twilio and Facebook bots, see [Installing the bots](#bot-installation).
+This project is forked from the Text Message Bot Starter Kit (SK), which is designed to get you up and running quickly with a common industry pattern, and to provide information and best practices around Watson services and bots. This application demonstrates how the Conversation service can be used with different bot kits, such as those from Facebook and Twilio, to enable users to have an intuitive and natural conversation with the bots. This use case for this starter kit is around booking flights. The application demonstrates how to use a third-party API to retrieve flight information from Skyscanner with data that is captured from the conversation.
 
 ## Table of Contents
  - [Getting Started](#getting-started)
@@ -39,18 +37,14 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
         conversation-service:
           label: conversation
           plan: free
-        weatherinsights-service:
-          label: weatherinsights
-          plan: Free-v2
         cloudantNoSQLDB-service:
           label: cloudantNoSQLDB
           plan: Shared
         applications:
           - services:
             - conversation-service
-            - weatherinsights-service
             - cloudantNoSQLDB-service
-          name: weather-conversation-bot
+          name: application-name
           command: npm start
           path: .
           memory: 512M
@@ -62,51 +56,27 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
      cf login -u <your-Bluemix-ID> -p <your-Bluemix-password>
      ```
 
-7. Create instances of the services that are used by the application. If you already have instances of the Alchemy Language service, you can use that instances and its API key:
+7. Create instances of the services that are used by the application.
 
      - Create an instance of the [Conversation][conversation] service by running the following command:
 
         cf create-service conversation free conversation-service
 
-    - If you do not already have one, create an instance of the [Alchemy Language](alchemy-language) service by running the following command:
+     - Create an instance of the [Cloudant NoSQL database](cloudantNoSQLDB) service by running the following command:
 
-        cf create-service alchemy_api free alchemy-language-service
-
-        **IMPORTANT:** This application performs best when you use an Alchemy API key that supports high transaction limits. The free Alchemy API key has a limit of 1000 transactions per day.  You can upgrade to the Standard or Advanced Plan of the Alchemy API service to obtain a key that supports more than 1000 transactions per day. To upgrade to the Standard or Advanced plans, you will need to add a credit card to your Bluemix account. For plan and pricing information, click [here](https://console.ng.bluemix.net/catalog/services/alchemyapi/).
-
-    - Create an instance of the [Weather Insights service](weatherinsights) by running the following command:
-
-        cf create-service weatherinsights Free-v2 weatherinsights-service
-
-    - Create an instance of the [Cloudant NoSQL database](cloudantNoSQLDB) service by running the following command:
-
-        cf create-service cloudantNoSQLDB Shared cloudantNoSQLDB-service
-
-    You will see a message which warns you that the **Shared** plan for the Cloudant NoSQLDB service is not free.
+        cf create-service cloudantNoSQLDB Lite cloudantNoSQLDB-service
 
 8. Create and retrieve service keys to access the Conversation service:
 
         cf create-service-key conversation-service myKey
         cf service-key conversation-service myKey
 
-9. Create and retrieve service keys to access the WeatherInsights service:
-
-        cf create-service-key weatherinsights-service myKey
-        cf service-key weatherinsights-service myKey
-
-    **IMPORTANT:** The Free plan for the WeatherInsights service provides a username and password as part of its service key. To take advantage of the full capabilities of the application in this starter kit, you should use an instance of the WeatherInsights service that supports high transaction limits. To be able to reach those limits, you will need to upgrade to the service's Standard or Premium plans because the pricing model for this service is based on the maximum number of API calls that you can make to the service per minute. The Premium plan is ideal. If you upgrade to the Standard or Premium plans, you will receive and API key rather than username and password credentials. To upgrade to the Standard or Premium plans, you will need to add a credit card to your Bluemix account. For plan and pricing information, click [here](https://console.ng.bluemix.net/catalog/services/weather-company-data/).
-
-10. Create and retrieve service keys for the Alchemy Language service:
-
-        cf create-service-key alchemy-language-service myKey
-        cf service-key alchemy-language-service myKey
-
-11. Create and retrieve service keys for the Cloudant service:
+9. Create and retrieve service keys for the Cloudant service:
 
         cf create-service-key cloudantNoSQLDB-service myKey
         cf service-key cloudantNoSQLDB-service myKey
 
-12. A file named `.env` file is used to provide the service keys for your service instances to the application. Create a `.env` file in the root directory of your clone of the project repository by copying the sample `.env.example` file using the following command:
+10. A file named `.env` file is used to provide the service keys for your service instances to the application. Create a `.env` file in the root directory of your clone of the project repository by copying the sample `.env.example` file using the following command:
 
         cp .env.example .env
 
@@ -115,22 +85,24 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
         USE_WEBUI=true
         ALCHEMY_API_KEY=
 
-        #CONVERSATION
+        #CONVERSATION EU-GB DEPLOYMENT
         CONVERSATION_URL=https://gateway.watsonplatform.net/conversation/api
         CONVERSATION_USERNAME=
         CONVERSATION_PASSWORD=
         WORKSPACE_ID=
 
-        #WEATHER
-        WEATHER_URL=
-        WEATHER_USERNAME=
-        WEATHER_PASSWORD=
+        #SKYSCANNER
+        SKYSCANNER_URL=http://partners.api.skyscanner.net/apiservices/pricing/v1.0
+        SKYSCANNER_API_KEY=
+        SKYSCANNER_COUNTRY=NL
+        SKYSCANNER_CURRENCY=EUR
+        SKYSCANNER_LOCALE=nl-NL
+        SKYSCANNER_SCHEMA=iata
 
         #CLOUDANT
         CLOUDANT_URL=
 
-
-13. The Conversation service must be trained before you can successfully use this application. The training data is provided in the file `resources/conversation-training-data.json` in your checkout of the repository. To train the model used by the Conversation service for this SK, do the following:
+11. The Conversation service must be trained before you can successfully use this application. The training data is provided in the file `resources/conversation-training-data.json` in your checkout of the repository. To train the model used by the Conversation service for this SK, do the following:
 
     1. Login to Bluemix
 
@@ -166,16 +138,10 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
 
 3. Modify the file `lib/bot/bot.js` to include your own bot handling code. If you would like to use a separate bot messaging service (such as `wit.ai`, `converse.ai`, and so on ), you can add the middleware to each bot instance that you'd like for that service to use, and configure it with the single `bot.js` file.
 
-## About the Weather Conversation pattern
-
-This Starter Kit uses weather information from the WeatherInsights service to demonstrate how to integrate a bot with the Conversation service available on Bluemix. It provides extension points for integration botkits from vendors such as Facebook and Twilio.
-
-For a given input *(e.g. question about weather in Austin, TX)* , a trained Conversation service instance responds with weather forecast. The service is composed of a model trained with a set of intents and entities (in this case, the intent is to get the forecast and the entities are cities that the user might want to know the forecast for). The dialog agent of the Conversation service is responsible for interacting with the user and keeping track of the context of the conversation so that it can provide answers to follow up questions about the same topic.
-
 ## Running locally
 First, make sure that you followed steps 1 through 11 in the [Getting Started](#Getting Started) and that you are still logged in to Bluemix.
 
-1. Make sure you have created the Alchemy Language, Conversation, Cloudant, and WeatherInsights services and updated the credentials information for those services in your `.env` file, as explained in the previous section.
+1. Make sure you have created the Conversation and Cloudant services and updated the credentials information for those services in your `.env` file, as explained in the previous section. Also make sure you updated the Skyscanner section of the `.env` file with your Skyscanner API key.
 
 2. Execute the following command to pick up the environment specified for your application based on its name in your `manifest.yml` file:
 
@@ -199,11 +165,11 @@ The following image provides a general overview of how botkits from external ser
 
 ![](readme_images/TextBot-ArchitectureFlow.jpg)
 
-This Starter Kit uses  weather data from the WeatherInsights service and can easily be extended to integrate with botkits from vendors such as Facebook and Twilio. However, the concepts used here are platform independent and can be applied to a use cases other than providing forecasts. To do so, define your use case in the Conversation service, configuring your Conversation by using the tool provided on the dashboard page for your instance of the Conversation service. You can also integrate other bots as mentioned on the [Installing the bots](#bot-installation) section.
+This application uses flight data from Skyscanner and can easily be extended to integrate with botkits from vendors such as Facebook and Twilio. However, the concepts used here are platform independent and can be applied to use cases other than booking flights. To do so, define your use case in the Conversation service and configure your Conversation by using the tool provided on the dashboard page for your instance of the Conversation service. You can also integrate other bots as mentioned on the [Installing the bots](#bot-installation) section.
 
 
 ## Reference information
-The following links provide more information about the Conversation, WeatherInsights, and Alchemy Language services.
+The following links provide more information about the Conversation and Cloudant services.
 
 ### Conversation service
   * [API documentation](http://www.ibm.com/watson/developercloud/doc/conversation/): Get an in-depth knowledge of the Conversation service
@@ -211,21 +177,11 @@ The following links provide more information about the Conversation, WeatherInsi
   * [API Explorer](https://watson-api-explorer.mybluemix.net/apis/conversation-v1): Try out the API
   * [Creating your own conversation service instance](http://www.ibm.com/watson/developercloud/doc/conversation/convo_getstart.shtml): How to use the API to create and use your own classifier
 
-### Weather service
-  * [API documentation](https://console.ng.bluemix.net/docs/services/Weather/index.html?pos=2): Get an in-depth understanding of the Weather Insights services
-  * [API reference](https://console.ng.bluemix.net/docs/services/Weather/weather_tutorials_samples.html#tutorials_samples): Code examples and reference
-  * [API Explorer](https://console.ng.bluemix.net/docs/services/Weather/weather_rest_apis.html#rest_apis): Try out the REST API
-
-### Alchemy Language
-  * [API documentation](http://www.alchemyapi.com/api): Get an in-depth understanding of the AlchemyAPI services
-  * [AlchemyData News reference](http://docs.alchemyapi.com/): API and query gallery
-
 ### Cloudant service
   * [API documentation](https://console.ng.bluemix.net/docs/services/Cloudant/index.html#Cloudant): Get an in-depth understanding of the Cloudant services
   * [API reference](https://docs.cloudant.com/api.html#-api-reference): Code examples and reference
 
 ## Best Practices
-
 Most of the best practices associated with writing a conversational application are explained within the [documentation for the Conversation service](http://www.ibm.com/watson/developercloud/doc/conversation/). These can be grouped into several general areas, as described in the next few sections.
 
 ### Intents
@@ -262,7 +218,7 @@ You may notice that the demo becomes unresponsive when you use the word "in" wit
 
 ## Debugging the application
 
-  To debug the application, go to `https://text-bot.mybluemix.net/debug.html` to see a panel that shows metadata which contains details on the interaction with the services being used.
+  To debug the application, go to `https://<application-name>.mybluemix.net/debug.html` to see a panel that shows metadata which contains details on the interaction with the services being used.
 
 ## License
 

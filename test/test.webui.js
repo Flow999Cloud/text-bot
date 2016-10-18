@@ -29,10 +29,10 @@ casper.thenOpen('http://localhost:3000', function (result) {
 
   // Assert - Initial Dialog message
   casper.then(function(){
-    casper.test.assertSelectorHasText('p', 'To get started, tell me the name of your city.');
+    casper.test.assertSelectorHasText('p', 'Hello, I am Watson. How can I help you?');
 
     // Enter - City
-    casper.sendKeys('#textInputOne', 'Austin');
+    casper.sendKeys('#textInputOne', 'I need a break');
     this.sendKeys('#textInputOne', casper.page.event.key.Enter, {
       keepFocus: true
     });
@@ -45,10 +45,10 @@ casper.thenOpen('http://localhost:3000', function (result) {
 
  // Check for Location disambiguation
   casper.then(function(){
-   casper.test.assertSelectorHasText('p', 'Which state did you mean?');
+   casper.test.assertSelectorHasText('p', 'Okay, where would you like to go?');
 
     // Enter - State
-    casper.sendKeys('#textInputOne', 'TX');
+    casper.sendKeys('#textInputOne', 'London');
     this.sendKeys('#textInputOne', casper.page.event.key.Enter, {
       keepFocus: true
     });
@@ -56,14 +56,14 @@ casper.thenOpen('http://localhost:3000', function (result) {
 
  // Process response
   casper.then(function () {
-    casper.waitForSelector('#scrollingChat > div:nth-child(5)', function () {
-    this.echo("Inside 5th");
+    casper.waitForSelector('#scrollingChat > div:nth-child(6)', function () {
+    this.echo("Inside 6th");
     });
   });
 
    //Check for Response
    casper.then(function(){
-    casper.test.assertSelectorHasText('p', 'The weather for Austin ');
+    casper.test.assertSelectorHasText('p', 'and where do you want to fly from');
    });
 
 }, null, 3 * 60 * 1000);

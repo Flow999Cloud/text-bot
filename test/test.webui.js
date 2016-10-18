@@ -56,8 +56,8 @@ casper.thenOpen('http://localhost:3000', function (result) {
 
  // Process response
   casper.then(function () {
-    casper.waitForSelector('#scrollingChat > div:nth-child(6)', function () {
-    this.echo("Inside 6th");
+    casper.waitForSelector('#scrollingChat > div:nth-child(5)', function () {
+    this.echo("Inside 5th");
     });
   });
 

@@ -19,7 +19,7 @@ This project is forked from the [Text Message Bot Starter Kit](https://www.ibm.c
 
 ## Getting Started
 
-This application is written in [Node.js](http://nodejs.org/) and uses the [npm](https://www.npmjs.com/), the Node Package Manager, command to install a software development kit (SDK) for the Watson Developer Cloud services, as well as to satisfy other dependencies. The following instructions include Instructions for downloading and installing these.
+This application is written in [Node.js](http://nodejs.org/) and uses the [npm](https://www.npmjs.com/), the Node Package Manager, command to install a software development kit (SDK) for the Watson Developer Cloud services, as well as to satisfy other dependencies. The following instructions include instructions for downloading and installing these.
 
 1. Log into GitHub and clone [the repository for this application](https://github.com/eciggaar/text-bot). Change to the folder that contains your clone of this repository.
 
@@ -29,7 +29,7 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
 
 4. If it is not already installed on your system, install [Node.js](http://nodejs.org/). Installing Node.js will also install the `npm` command. Make sure to use node version 4.2.1 or later, as specified in `package.json`, or you may run into problems when installing other mandatory Node.js packages.
 
-5. <a name="edityml">Edit the `manifest.yml` file</a> in the folder that contains your clone of the repository and replace `application-name` with a unique name for your copy of the application. The name that you specify determines the application's URL, such as `application-name.mybluemix.net`. The relevant portion of the `manifest.yml` file looks like the following:
+5. <a name="edityml">Edit the `manifest.yml` file</a> in the folder that contains your clone of the repository and replace `<application-name>` with a unique name for your copy of the application. The name that you specify determines the application's URL, such as `application-name.mybluemix.net`. The relevant portion of the `manifest.yml` file looks like the following:
 
         declared-services:
         conversation-service:
@@ -81,7 +81,6 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
     The `.env` file will look something like the following:
 
         USE_WEBUI=true
-        ALCHEMY_API_KEY=
 
         #CONVERSATION EU-GB DEPLOYMENT
         CONVERSATION_URL=https://gateway.watsonplatform.net/conversation/api
@@ -207,11 +206,11 @@ To troubleshoot your Bluemix application, use the logs. To see the logs, run:
   cf logs <application-name> --recent
   ```
 
-This sample application implements fairly narrow use cases. E.g., departure and return dates need to be entered in the format <number> <month>. Furthermore, not every airport is listed as entity. The application is designed to help you get started with the Conversation service, and therefore does not implement detailed error checking or sophisticated question parsing.
+This sample application implements fairly narrow use cases. E.g., departure and return dates need to be entered in the format `<number> <month>`. Furthermore, not every airport is listed as entity. The application is designed to help you get started with the Conversation service, and therefore does not implement detailed error checking or sophisticated question parsing.
 
 ## Debugging the application
 
-  To debug the application, go to `https://<application-name>.mybluemix.net/debug.html` to see a panel that shows metadata which contains details on the interaction with the services being used.
+  To debug the application, go to `https://<application-name>.mybluemix.net/debug.html`. This shows a panel that displays metadata which contains details on the interaction with the services being used.
 
 ## License
 

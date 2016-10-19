@@ -1,7 +1,7 @@
 {
   "name": "text-bot",
   "version": "0.1.2",
-  "description": "Weather bot that uses the IBM Watson Conversation service, AlchemyLanguage, and the Weather Channel API.",
+  "description": "Flight bot that uses the IBM Watson Conversation service and the Skyscanner API.",
   "main": "server.js",
   "scripts": {
     "dev": "gulp",
@@ -65,7 +65,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/watson-developer-cloud/text-bot.git"
+    "url": "https://github.com/eciggaar/text-bot.git"
   },
   "engines": {
     "node": ">= 4.x",

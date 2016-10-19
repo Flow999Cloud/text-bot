@@ -31,7 +31,7 @@ casper.thenOpen('http://localhost:3000', function (result) {
   casper.then(function(){
     casper.test.assertSelectorHasText('p', 'Hello, I am Watson. How can I help you?');
 
-    // Enter - City
+    // Enter - Flight booking intent
     casper.sendKeys('#textInputOne', 'I need a break');
     this.sendKeys('#textInputOne', casper.page.event.key.Enter, {
       keepFocus: true
@@ -43,11 +43,11 @@ casper.thenOpen('http://localhost:3000', function (result) {
     casper.waitForSelector('#scrollingChat > div:nth-child(3)', function () {});
   });
 
- // Check for Location disambiguation
+ // Get origin city
   casper.then(function(){
    casper.test.assertSelectorHasText('p', 'Okay, where would you like to go?');
 
-    // Enter - State
+    // Enter - origin
     casper.sendKeys('#textInputOne', 'London');
     this.sendKeys('#textInputOne', casper.page.event.key.Enter, {
       keepFocus: true
@@ -61,9 +61,60 @@ casper.thenOpen('http://localhost:3000', function (result) {
     });
   });
 
+  // Get destination city
+   casper.then(function(){
+    casper.test.assertSelectorHasText('p', 'and where do you want to fly from?');
+
+     // Enter - destination
+     casper.sendKeys('#textInputOne', 'Amsterdam');
+     this.sendKeys('#textInputOne', casper.page.event.key.Enter, {
+       keepFocus: true
+     });
+   });
+
+  // Process response
+   casper.then(function () {
+     casper.waitForSelector('#scrollingChat > div:nth-child(7)', function () {});
+
+   });
+
+   // Get departe date
+    casper.then(function(){
+     casper.test.assertSelectorHasText('p', 'So when do you want to fly from AMS to LHR?');
+
+      // Enter - departure date
+      casper.sendKeys('#textInputOne', '19 october');
+      this.sendKeys('#textInputOne', casper.page.event.key.Enter, {
+        keepFocus: true
+      });
+    });
+
+   // Process response
+    casper.then(function () {
+      casper.waitForSelector('#scrollingChat > div:nth-child(9)', function () {});
+
+    });
+
+    // Get inbound date
+     casper.then(function(){
+      casper.test.assertSelectorHasText('p', 'and when do you want to come back?');
+
+       // Enter - inbound date
+       casper.sendKeys('#textInputOne', '20 october');
+       this.sendKeys('#textInputOne', casper.page.event.key.Enter, {
+         keepFocus: true
+       });
+     });
+
+    // Process response
+     casper.then(function () {
+       casper.waitForSelector('#scrollingChat > div:nth-child(11)', function () {});
+
+     });
+
    //Check for Response
    casper.then(function(){
-    casper.test.assertSelectorHasText('p', 'and where do you want to fly from');
+    casper.test.assertSelectorHasText('p', 'Okay, so let me see what I can find for you. This may take a few seconds...');
    });
 
 }, null, 3 * 60 * 1000);

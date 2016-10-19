@@ -10,7 +10,7 @@ This project is forked from the [Text Message Bot Starter Kit](https://www.ibm.c
 
 ## Table of Contents
  - [Getting Started](#getting-started)
- - [Installing the bots](#installating-the-bots)
+ - [Installing the bots](#installing-the-bots)
  - [Running the application locally](#running-locally)
  - [Adapting/Extending the Starter Kit](#adaptingextending-the-starter-kit)
  - [Best Practices](#best-practices)

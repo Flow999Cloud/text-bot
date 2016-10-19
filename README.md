@@ -1,7 +1,7 @@
 # Text Bot
 
 <p align="center">
-  <img src="http://g.recordit.co/mfjBM2ZJEn.gif" alt="demo" />
+  <img src="images/watson_flightbot.gif" alt="demo" />
 </p>
 
 ## Installation
@@ -157,7 +157,7 @@ First, make sure that you followed steps 1 through 11 in the [Getting Started](#
 
 The following image provides a general overview of how botkits from external services can interact with Watson services.
 
-## Architecture Diagram
+### Architecture Diagram
 
 ![](readme_images/TextBot-ArchitectureFlow.jpg)
 

@@ -1,8 +1,6 @@
 # Text Bot
 
-<p align="center">
-  <iframe src="//giphy.com/embed/l2JhpAVU4RQveitvq" width="480" height="364" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-</p>
+!video[](readme_images/watson_flightbot.gif)
 
 ## Installation
 

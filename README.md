@@ -1,6 +1,8 @@
 # Text Bot
 
-!video[](readme_images/watson_flightbot.gif)
+<p align="center">
+  <img src="https://media.giphy.com/media/l2JhpAVU4RQveitvq/giphy.gif" alt="demo" />
+</p>
 
 ## Installation
 

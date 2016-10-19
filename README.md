@@ -10,12 +10,12 @@ This project is forked from the [Text Message Bot Starter Kit](https://www.ibm.c
 
 ## Table of Contents
  - [Getting Started](#getting-started)
- - [Installing the bots](#bot-installation)
+ - [Installing the bots](#installating-the-bots)
  - [Running the application locally](#running-locally)
  - [Adapting/Extending the Starter Kit](#adaptingextending-the-starter-kit)
  - [Best Practices](#best-practices)
  - [Troubleshooting](#troubleshooting)
- - [Debugging the application](#debugging)
+ - [Debugging the application](#debugging-the-application)
 
 ## Getting Started
 
@@ -126,7 +126,6 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
     [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/text-bot.git)
 
 ## Installing the bots
-
 1. Edit the `.env` file to add credentials for Facebook and Twilio. See the following links for information about where you can get the credentials required by the botkit for each service:
 
     * [Facebook](https://github.com/howdyai/botkit/blob/master/readme-facebook.md#getting-started)

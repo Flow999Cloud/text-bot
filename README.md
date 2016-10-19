@@ -157,7 +157,7 @@ First, make sure that you followed steps 1 through 11 in the [Getting Started](#
 
 The following image provides a general overview of how botkits from external services can interact with Watson services.
 
-# Architecture Diagram
+## Architecture Diagram
 
 ![](readme_images/TextBot-ArchitectureFlow.jpg)
 
@@ -208,9 +208,7 @@ To troubleshoot your Bluemix application, use the logs. To see the logs, run:
   cf logs <application-name> --recent
   ```
 
-This sample application implements fairly narrow use cases. Abbreviations for cities are generally not supported - you will need to specify the full name of your city and state.
-
-You may notice that the demo becomes unresponsive when you use the word "in" within a question, such as "What is the weather in Boston?". This simple application is designed to help you get started, and therefore does not implement detailed error checking or sophisticated question parsing.
+This sample application implements fairly narrow use cases. E.g., departure and return dates need to be entered in the format <number> <month>. Furthermore, not every airport is listed as entity. The application is designed to help you get started with the Conversation service, and therefore does not implement detailed error checking or sophisticated question parsing.
 
 ## Debugging the application
 

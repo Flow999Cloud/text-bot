@@ -10,8 +10,7 @@ applications:
 - services:
   - conversation-service
   - cloudantNoSQLDB-service
-  name: watsondevday-ams
+  name: FlightBot
   command: npm start
   path: .
   memory: 512M
-  host: watsondevday-ams

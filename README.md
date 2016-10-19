@@ -1,7 +1,7 @@
 # Text Bot
 
 <p align="center">
-  <img src="http://www.giphy.com/gifs/l2JhpAVU4RQveitvq" alt="demo" />
+  <iframe src="//giphy.com/embed/l2JhpAVU4RQveitvq" width="480" height="364" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </p>
 
 ## Installation

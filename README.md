@@ -6,7 +6,7 @@
 
 ## Installation
 
-This project is forked from the Text Message Bot Starter Kit (SK), which is designed to get you up and running quickly with a common industry pattern, and to provide information and best practices around Watson services and bots. This application demonstrates how the Conversation service can be used with different bot kits, such as those from Facebook and Twilio, to enable users to have an intuitive and natural conversation with the bots. This use case for this starter kit is around booking flights. The application demonstrates how to use a third-party API to retrieve flight information from Skyscanner with data that is captured from the conversation.
+This project is forked from the [Text Message Bot Starter Kit](https://www.ibm.com/watson/developercloud/starter-kits.html#text-message-chatbot) (SK), which is designed to get you up and running quickly with a common industry pattern, and to provide information and best practices around Watson services and bots. This application demonstrates how the Conversation service can be used with different bot kits, such as those from Facebook and Twilio, to enable users to have an intuitive and natural conversation with the bots. This use case for this starter kit is around booking flights. The application demonstrates how to use a third-party API to retrieve flight information from Skyscanner with data that is captured from the conversation.
 
 ## Table of Contents
  - [Getting Started](#getting-started)

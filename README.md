@@ -1,7 +1,7 @@
 # Text Bot
 
 <p align="center">
-  <img src="https://media.giphy.com/media/l2JhpAVU4RQveitvq/giphy.gif" alt="demo" />
+  <img src="https://media.giphy.com/media/26gJzkrPYM7eHLBxS/giphy.gif" alt="demo" />
 </p>
 
 ## Installation

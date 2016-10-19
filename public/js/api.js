@@ -67,11 +67,6 @@ var Api = (function() {
     };
 
     var params = JSON.stringify(payloadToWatson);
-    // Stored in variable (publicly visible through Api.getRequestPayload)
-    // to be used throughout the application
-    //if (Object.getOwnPropertyNames(payloadToWatson).length !== 0) {
-  //    Api.setRequestPayload(params);
-  //  }
 
     http.send(params);
   }
@@ -98,7 +93,18 @@ var Api = (function() {
       if (newPayload.context) {
         if (newPayload.context.skyscanner_api) {
           delete newPayload.context.skyscanner_api;
-          newPayloadStr = JSON.stringify(newPayload);
+          if (newPayload.context.outDate.indexOf('today') >= 0) {
+            newPayload.context.outDate = newPayload.context.today;
+          } else if (newPayload.context.outDate.indexOf('tomorrow') >= 0) {
+            newPayload.context.outDate = newPayload.context.tomorrow;
+          }
+
+          if (newPayload.context.returnDate.indexOf('today') >= 0) {
+            newPayload.context.returnDate = newPayload.context.today;
+          } else if (newPayload.context.returnDate.indexOf('tomorrow') >= 0) {
+            newPayload.context.returnDate = newPayload.context.tomorrow;
+          }
+
           requestFlightDetails(newPayload);
         }
       }

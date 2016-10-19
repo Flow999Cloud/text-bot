@@ -1,5 +1,4 @@
-# Text Bot [![Build Status](https://travis-ci.org/watson-developer-cloud/text-bot.svg?branch=master)](https://travis-ci.org/eciggaar/text-bot)
-
+# Text Bot
 
 <p align="center">
   <img src="http://g.recordit.co/mfjBM2ZJEn.gif" alt="demo" />
@@ -158,9 +157,7 @@ First, make sure that you followed steps 1 through 11 in the [Getting Started](#
 
 The following image provides a general overview of how botkits from external services can interact with Watson services.
 
-<a>
 # Architecture Diagram
-</a>
 
 ![](readme_images/TextBot-ArchitectureFlow.jpg)
 

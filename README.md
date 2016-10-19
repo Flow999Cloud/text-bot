@@ -1,7 +1,7 @@
 # Text Bot
 
 <p align="center">
-  <img src="images/watson_flightbot.gif" alt="demo" />
+  <img src="readme_images/watson_flightbot.gif" alt="demo" />
 </p>
 
 ## Installation

@@ -22,7 +22,7 @@ var conversation = require('../../lib/api/conversation');
 describe('conversation.js', function() {
   this.timeout(5000);
   this.slow(3000);
-  it('should return geo location for Miami', function(done) {
+  it('should trigger the conversation service', function(done) {
     var params = {
       input : {
         text: 'Hi this is a test'

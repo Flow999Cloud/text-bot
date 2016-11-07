@@ -83,7 +83,7 @@ casper.thenOpen('http://localhost:3000', function (result) {
      casper.test.assertSelectorHasText('p', 'So when do you want to fly from AMS to LHR?');
 
       // Enter - departure date
-      casper.sendKeys('#textInputOne', '19 october');
+      casper.sendKeys('#textInputOne', 'today');
       this.sendKeys('#textInputOne', casper.page.event.key.Enter, {
         keepFocus: true
       });
@@ -100,7 +100,7 @@ casper.thenOpen('http://localhost:3000', function (result) {
       casper.test.assertSelectorHasText('p', 'and when do you want to come back?');
 
        // Enter - inbound date
-       casper.sendKeys('#textInputOne', '20 october');
+       casper.sendKeys('#textInputOne', 'tomorrow');
        this.sendKeys('#textInputOne', casper.page.event.key.Enter, {
          keepFocus: true
        });

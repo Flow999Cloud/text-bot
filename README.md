@@ -120,10 +120,6 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
 
     `cf push`
 
-    or by pressing the following "Deploy to Bluemix" button:
-
-    [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/text-bot.git)
-
 ## Installing the bots
 1. Edit the `.env` file to add credentials for Facebook and Twilio. See the following links for information about where you can get the credentials required by the botkit for each service:
 

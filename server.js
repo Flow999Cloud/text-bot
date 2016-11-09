@@ -54,6 +54,7 @@ var controller = require('./lib/controller');
 checkAndRequire(process.env.USE_FACEBOOK, './lib/bot/facebook','Initializing FB Messenger Bot');
 checkAndRequire(process.env.USE_TWILIO, './lib/bot/twilio', 'Initializing Twilio Bot');
 checkAndRequire(process.env.USE_TWILIO_SMS, './lib/bot/twilio-sms', 'Initializing Twilio SMS Bot');
+checkAndRequire(process.env.USE_SLACK, './lib/bot/slack', 'Initializing Slack Bot');
 checkAndRequire(process.env.USE_WEBUI, './lib/bot/web-ui', 'Initializing WebUI');
 
 http.listen(port, function () {

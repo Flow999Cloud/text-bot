@@ -96,6 +96,10 @@ This application is written in [Node.js](http://nodejs.org/) and uses the [npm](
         SKYSCANNER_LOCALE=nl-NL
         SKYSCANNER_SCHEMA=iata
 
+        #SLACK
+        USE_SLACK=false
+        SLACK_TOKEN=
+
         #CLOUDANT
         CLOUDANT_URL=
 
@@ -145,7 +149,7 @@ First, make sure that you followed steps 1 through 11 in the [Getting Started](#
 
     **Note** If you run into problems during installation, you might want to update your node version. Get version 4.4.7 or above.
 
-4. Open `http://localhost:5000` to see the running application.
+4. Open `http://localhost:3000` to see the running application.
 
 ## Adapting/Extending the Starter Kit
 

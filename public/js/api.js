@@ -90,18 +90,19 @@ var Api = (function() {
       var newPayload = JSON.parse(newPayloadStr);
 
       //On receiving a response check whether 2nd automated request is needed to get flight details from Skyscanner
+      //Quick and dirty check on language :-)
       if (newPayload.context) {
         if (newPayload.context.skyscanner_api) {
           delete newPayload.context.skyscanner_api;
-          if (newPayload.context.outDate.indexOf('today') >= 0) {
+          if (newPayload.context.outDate.indexOf('today') >= 0 || newPayload.context.outDate.indexOf('vandaag') >=0) {
             newPayload.context.outDate = newPayload.context.today;
-          } else if (newPayload.context.outDate.indexOf('tomorrow') >= 0) {
+          } else if (newPayload.context.outDate.indexOf('tomorrow') >= 0 || newPayload.context.outDate.indexOf('morgen') >= 0) {
             newPayload.context.outDate = newPayload.context.tomorrow;
           }
 
-          if (newPayload.context.returnDate.indexOf('today') >= 0) {
+          if (newPayload.context.returnDate.indexOf('today') >= 0 || newPayload.context.returnDate.indexOf('vandaag') >= 0) {
             newPayload.context.returnDate = newPayload.context.today;
-          } else if (newPayload.context.returnDate.indexOf('tomorrow') >= 0) {
+          } else if (newPayload.context.returnDate.indexOf('tomorrow') >= 0 || newPayload.context.returnDate.indexOf('morgen') >= 0) {
             newPayload.context.returnDate = newPayload.context.tomorrow;
           }
 

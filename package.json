@@ -38,7 +38,9 @@
     "uuid": "^2.0.2",
     "watson-developer-cloud": "^2.1.4",
     "node-rest-client": "^2.0.1",
-    "slackify-html": "^1.0.1"
+    "slackify-html": "^1.0.1",
+    "localize": "^0.4.7",
+    "moment": "^2.17.1"
   },
   "devDependencies": {
     "browser-sync": "^2.14.0",
